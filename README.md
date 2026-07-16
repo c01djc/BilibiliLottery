@@ -4,6 +4,10 @@
 
 **作者：** [Leetaohua](https://space.bilibili.com/28924905)
 
+## 预览
+
+![软件界面预览](docs/screenshots/preview.png)
+
 ## 功能特性
 
 - **扫码登录** — 使用 B 站 App 扫码，安全获取登录态
@@ -32,7 +36,7 @@
 ### 命令行
 
 ```bash
-git clone https://github.com/<你的用户名>/BilibiliLottery.git
+git clone https://github.com/c01djc/BilibiliLottery.git
 cd BilibiliLottery
 npm install
 npm start
