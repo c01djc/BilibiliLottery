@@ -1,0 +1,23 @@
+{
+  "name": "bilibili-lottery",
+  "version": "1.0.0",
+  "description": "Bilibili 粉丝抽奖工具 — 扫码登录、粉丝数据、公平抽奖、通知管理",
+  "author": "Leetaohua",
+  "license": "MIT",
+  "type": "module",
+  "keywords": [
+    "bilibili",
+    "lottery",
+    "fans",
+    "giveaway",
+    "抽奖"
+  ],
+  "scripts": {
+    "start": "node server/app.js",
+    "dev": "node --watch server/app.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "express-session": "^1.18.1"
+  }
+}
