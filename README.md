@@ -4,8 +4,6 @@
 
 **作者：** [Leetaohua](https://space.bilibili.com/28924905)
 
-🌐 **[在线宣传页](https://c01djc.github.io/BilibiliLottery/)** · 本地预览：打开 `docs/index.html`
-
 ## 预览
 
 ![软件界面预览](docs/screenshots/preview.png)
