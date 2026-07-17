@@ -30,6 +30,7 @@ router.get('/poll', async (req, res) => {
 
     // 0=成功 86101=未扫码 86090=已扫码未确认 86038=过期
     if (data.code === 0) {
+      client.ensureDeviceCookies();
       const nav = await client.getNav();
       req.session.user = {
         uid: nav.mid,
@@ -52,7 +53,29 @@ router.get('/poll', async (req, res) => {
 
 router.get('/me', async (req, res) => {
   if (!req.session.loggedIn) return res.json({ loggedIn: false });
-  res.json({ loggedIn: true, user: req.session.user });
+
+  const loadedCount = req.session.fans?.length || 0;
+  const bilibiliTotal = req.session.user?.fans || 0;
+  const poolSource = req.session.poolSource || 'fans';
+
+  res.json({
+    loggedIn: true,
+    user: req.session.user,
+    pool: loadedCount > 0 ? {
+      fans: req.session.fans,
+      poolSource,
+      bilibiliTotal,
+      complete: loadedCount >= bilibiliTotal && bilibiliTotal > 0,
+      limited: bilibiliTotal > 0 && loadedCount < bilibiliTotal,
+      missing: Math.max(0, bilibiliTotal - loadedCount),
+      commentOnly: poolSource === 'comments',
+      commentCount: req.session.commentCount || 0,
+      fanBaseCount: req.session.fanBaseCount || (poolSource === 'mixed' ? loadedCount : loadedCount),
+      videoTitle: req.session.poolVideo?.title || '',
+      videoBvid: req.session.poolVideo?.bvid || '',
+      contentKind: req.session.poolVideo?.contentKind || 'video'
+    } : null
+  });
 });
 
 router.post('/logout', (req, res) => {

@@ -87,23 +87,6 @@
       margin-top: 2px;
     }
 
-    .user-info {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      background: rgba(255,255,255,0.2);
-      padding: 8px 16px;
-      border-radius: 24px;
-      font-size: 14px;
-    }
-
-    .user-info img {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      border: 2px solid white;
-    }
-
     .author-badge {
       display: flex;
       align-items: center;
@@ -379,7 +362,7 @@
     /* Stats */
     .stats-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 16px;
       margin-bottom: 20px;
     }
@@ -404,6 +387,21 @@
       margin-top: 4px;
     }
 
+    .fan-api-info {
+      margin-bottom: 14px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      background: #e6f7ff;
+      border: 1px solid #91d5ff;
+      color: #0050b3;
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .fan-api-info strong {
+      color: #003a8c;
+    }
+
     .fan-limit-notice {
       display: none;
       margin-bottom: 14px;
@@ -420,7 +418,143 @@
       display: block;
     }
 
-    /* Search & Filter */
+    .fan-limit-notice.complete {
+      background: #f6ffed;
+      border-color: #b7eb8f;
+      color: #389e0d;
+    }
+
+    .fan-limit-notice.blocking {
+      background: #fff1f0;
+      border-color: #ffa39e;
+      color: #cf1322;
+    }
+
+    .fan-sync-notice {
+      display: none;
+      margin-bottom: 14px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      background: #e6f7ff;
+      border: 1px solid #91d5ff;
+      color: #0050b3;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .fan-sync-notice.show { display: block; }
+
+    .fan-sync-notice.warn {
+      background: #fff7e6;
+      border-color: #ffd591;
+      color: #ad6800;
+    }
+
+    .fan-sync-actions {
+      display: none;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .fan-sync-actions.show {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .fan-sync-actions .btn {
+      flex: 1;
+      min-width: 120px;
+    }
+
+    .fetch-hint {
+      margin-top: 10px;
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      text-align: center;
+    }
+
+    .pool-divider {
+      margin: 16px 0 12px;
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-secondary);
+      position: relative;
+    }
+
+    .pool-divider::before,
+    .pool-divider::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 28%;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .pool-divider::before { left: 0; }
+    .pool-divider::after { right: 0; }
+
+    .pool-source-box {
+      display: none;
+      padding: 12px;
+      border-radius: 10px;
+      background: #f6ffed;
+      border: 1px solid #b7eb8f;
+      margin-bottom: 12px;
+      font-size: 12px;
+      color: #389e0d;
+      line-height: 1.5;
+    }
+
+    .pool-source-box.show { display: block; }
+
+    .comment-fetch .form-group {
+      margin-bottom: 10px;
+    }
+
+    .comment-fetch label {
+      display: block;
+      font-size: 12px;
+      color: var(--text-secondary);
+      margin-bottom: 4px;
+    }
+
+    .comment-fetch input[type="text"] {
+      width: 100%;
+      padding: 9px 10px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 13px;
+    }
+
+    .comment-merge-option {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      margin: 10px 0 12px;
+      font-size: 12px;
+      color: var(--text-secondary);
+      cursor: pointer;
+      line-height: 1.5;
+    }
+
+    .comment-merge-option input {
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    .import-guide {
+      margin-top: 10px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      background: #f0f5ff;
+      border: 1px solid #adc6ff;
+      color: #1d39c4;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
     .toolbar {
       display: flex;
       gap: 12px;
@@ -525,6 +659,23 @@
       font-size: 12px;
       color: var(--text-secondary);
       margin-top: 2px;
+    }
+
+    .uid-masked {
+      cursor: default;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .uid-masked .uid-full {
+      display: none;
+    }
+
+    .uid-masked:hover .uid-short {
+      display: none;
+    }
+
+    .uid-masked:hover .uid-full {
+      display: inline;
     }
 
     .fan-days {
@@ -957,11 +1108,11 @@
 
     /* Loading */
     .loading-bar {
-      height: 3px;
+      height: 6px;
       background: var(--border);
-      border-radius: 2px;
+      border-radius: 3px;
       overflow: hidden;
-      margin: 12px 0;
+      margin: 12px 0 6px;
       display: none;
     }
 
@@ -971,10 +1122,23 @@
 
     .loading-bar .progress {
       height: 100%;
-      background: var(--bili-pink);
+      background: linear-gradient(90deg, var(--bili-pink), #ff85a8);
       width: 0%;
-      transition: width 0.3s;
-      border-radius: 2px;
+      transition: width 0.25s ease;
+      border-radius: 3px;
+    }
+
+    .loading-status {
+      display: none;
+      font-size: 12px;
+      color: var(--text-secondary);
+      text-align: center;
+      margin: 0 0 10px;
+      line-height: 1.4;
+    }
+
+    .loading-status.show {
+      display: block;
     }
 
     /* Pagination */
@@ -1007,19 +1171,6 @@
       background: var(--bili-pink);
       color: white;
       border-color: var(--bili-pink);
-    }
-
-    /* Demo badge */
-    .demo-badge {
-      position: fixed;
-      bottom: 16px;
-      right: 16px;
-      background: rgba(0,0,0,0.7);
-      color: white;
-      padding: 8px 16px;
-      border-radius: 20px;
-      font-size: 12px;
-      z-index: 999;
     }
 
     /* ========== Lottery Stage ========== */
@@ -1593,10 +1744,6 @@
       overflow: hidden;
     }
 
-    body.lottery-active .demo-badge {
-      display: none;
-    }
-
     /* ========== Notification Management ========== */
     .notify-section {
       max-width: 1400px;
@@ -1930,15 +2077,6 @@
       border-radius: 50%;
     }
 
-    .demo-hint {
-      font-size: 12px;
-      color: #e65100;
-      background: #fff3e0;
-      padding: 8px 12px;
-      border-radius: 6px;
-      margin-top: 8px;
-    }
-
     .container.has-notify {
       margin-bottom: 0;
     }
@@ -1958,10 +2096,6 @@
       </div>
     </div>
     <div class="header-right">
-      <div class="user-info" id="userInfo" style="display: none;">
-        <img id="userAvatar" src="" alt="头像">
-        <span id="userName">未登录</span>
-      </div>
       <a class="author-badge" href="https://space.bilibili.com/28924905" target="_blank" rel="noopener noreferrer" title="访问作者主页">
         <img class="author-avatar" src="/api/proxy/avatar?u=https%3A%2F%2Fi0.hdslb.com%2Fbfs%2Fface%2F062bd428cd42201d91110b054b61df3b3eded21c.jpg%40240w_240h_1c_1s_%21web-avatar-nav.avif" alt="Leetaohua">
         <span class="author-text">
@@ -1996,16 +2130,56 @@
           <div class="loading-bar" id="loadingBar">
             <div class="progress" id="loadingProgress"></div>
           </div>
+          <div class="loading-status" id="loadingStatus"></div>
           <button class="btn btn-primary btn-block" id="btnLogin" onclick="startLogin()">
             生成二维码
           </button>
           <button class="btn btn-outline btn-block" id="btnFetchFans" style="margin-top:10px; display:none;" onclick="fetchFans()">
             获取粉丝数据
           </button>
+          <button class="btn btn-outline btn-block" id="btnSyncFans" style="margin-top:8px; display:none;" onclick="syncNewFans()">
+            同步新粉丝
+          </button>
           <button class="btn btn-outline btn-block" id="btnImportFans" style="margin-top:8px; display:none;" onclick="document.getElementById('fanImportFile').click()">
             导入粉丝补充
           </button>
+          <button class="btn btn-outline btn-block" id="btnExportFans" style="margin-top:6px; display:none;" onclick="exportCurrentFans()">
+            导出当前名单（CSV）
+          </button>
+          <button class="btn btn-outline btn-block" id="btnImportTemplate" style="margin-top:6px; display:none;" onclick="downloadImportTemplate()">
+            下载导入模板（CSV）
+          </button>
           <input type="file" id="fanImportFile" accept=".json,.csv,.txt" style="display:none;" onchange="importFansFile(event)">
+          <div class="import-guide" id="importGuide" style="display:none;">
+            <strong>名单不完整？</strong>
+            <br>① B站 API <strong>无法直接列出「少了谁」</strong>，只能拉取部分粉丝。
+            <br>② 点「导出当前名单」保存已获取的名单备查。
+            <br>③ 若你有<strong>更完整的粉丝表</strong>（以前备份/其他工具导出），按模板整理后「导入粉丝补充」，会自动合并并显示新增多少人。
+            <br>④ 没有完整表？发抽奖动态，用下方「评论抽奖」让粉丝评论报名参与。
+          </div>
+          <p class="fetch-hint" id="fetchHint" style="display:none;">
+            B站粉丝列表与网页同款接口拉取（每页 20 人，自动翻页）。粉丝数会随时变化，获取后可点「同步新粉丝」增量更新。
+          </p>
+
+          <div class="pool-divider" id="poolDivider" style="display:none;">大 UP 推荐 · 评论抽奖</div>
+
+          <div class="comment-fetch" id="commentFetchBox" style="display:none;">
+            <div class="form-group">
+              <label>抽奖视频 / 动态链接</label>
+              <input type="text" id="videoInput" placeholder="完整 opus 链接或 BV 号，勿截断数字">
+            </div>
+            <div class="form-group">
+              <label>评论关键词（可选，留空=全部评论者）</label>
+              <input type="text" id="keywordInput" placeholder="例：抽奖、参与、报名">
+            </div>
+            <label class="comment-merge-option">
+              <input type="checkbox" id="commentOnlyPool">
+              <span>仅评论抽奖（不合并粉丝池，只统计评论参与者）</span>
+            </label>
+            <button class="btn btn-primary btn-block" id="btnFetchComments" onclick="fetchCommentPool()">
+              从评论获取参与者
+            </button>
+          </div>
         </div>
       </div>
 
@@ -2031,8 +2205,12 @@
           <!-- Stats -->
           <div class="stats-grid">
             <div class="stat-card">
+              <div class="stat-value" id="statLoaded">0</div>
+              <div class="stat-label">可抽奖人数</div>
+            </div>
+            <div class="stat-card">
               <div class="stat-value" id="statTotal">0</div>
-              <div class="stat-label">粉丝总数</div>
+              <div class="stat-label">B站粉丝总数</div>
             </div>
             <div class="stat-card">
               <div class="stat-value" id="statAvgDays">0</div>
@@ -2043,6 +2221,17 @@
               <div class="stat-label">最长关注天数</div>
             </div>
           </div>
+
+          <div class="fan-api-info" id="fanApiInfo">
+            <strong>参与池说明：</strong>
+            <br>① <strong>粉丝模式</strong>：与 B 站网页粉丝列表同款接口，自动翻页拉取（与关注天数无关）。
+            <br>② <strong>评论模式</strong>：填入视频 BV 或 opus 动态链接，默认<strong>合并</strong>到粉丝池；勾选「仅评论抽奖」则只统计评论者。
+            <br>③ <strong>导入补充</strong>：上传 CSV/JSON 完整名单。
+          </div>
+
+          <div class="pool-source-box" id="poolSourceBox"></div>
+
+          <div class="fan-sync-notice" id="fanSyncNotice"></div>
 
           <div class="fan-limit-notice" id="fanLimitNotice"></div>
 
@@ -2135,7 +2324,7 @@
             <div class="lottery-config">
               <div class="form-group">
                 <label>最低关注天数</label>
-                <input type="number" id="minDays" value="0" min="0" placeholder="0 = 不限">
+                <input type="number" id="minDays" value="0" min="0" placeholder="0 = 不限，仅影响抽奖">
               </div>
               <div class="form-group">
                 <label>回复时限</label>
@@ -2152,12 +2341,6 @@
                 <label>自定义回复时限（小时）</label>
                 <input type="number" id="replyCustomHours" value="24" min="1">
               </div>
-            </div>
-            <div class="form-group" style="margin-top:8px;">
-              <label style="display:flex;align-items:center;gap:8px;cursor:pointer;">
-                <input type="checkbox" id="demoSpeed" checked>
-                演示加速（1分钟 ≈ 24小时，方便测试）
-              </label>
             </div>
             <button class="lottery-btn" id="btnLottery" onclick="startLottery()" disabled>
               🎲 开始抽奖
@@ -2190,9 +2373,6 @@
           <button class="btn btn-send btn-sm" onclick="sendAllNotifications()">📤 一键发送全部</button>
           <button class="btn btn-outline btn-sm" onclick="editTemplate()">编辑模板</button>
           <div class="notify-stats" id="notifyStats"></div>
-        </div>
-        <div class="demo-hint" id="demoHint" style="display:none;">
-          ⚡ 演示加速已开启：48小时倒计时 ≈ 2分钟，方便快速测试超时重抽
         </div>
         <div class="notify-list" id="notifyList"></div>
       </div>
@@ -2316,8 +2496,6 @@
     </div>
   </div>
 
-  <div class="demo-badge" style="display:none;"></div>
-
   <footer class="app-footer">
     <div class="footer-inner">
       <a class="author-footer" href="https://space.bilibili.com/28924905" target="_blank" rel="noopener noreferrer" title="访问作者主页">
@@ -2333,7 +2511,21 @@
     // ========== State ==========
     let currentUser = null;
     let fans = [];
-    let fanMeta = { bilibiliTotal: 0, limited: false };
+    let fanMeta = {
+      bilibiliTotal: 0,
+      limited: false,
+      apiMaxAutoFetch: 2000,
+      poolSource: 'fans',
+      videoTitle: '',
+      commentCount: 0,
+      fanBaseCount: 0,
+      fanPoolCount: 0,
+      commentOnly: false,
+      complete: false,
+      missing: 0,
+      liveTotal: 0
+    };
+    const API_FAN_AUTO_LIMIT = 2000;
     let filteredFans = [];
     let prizes = [];
     let currentPage = 1;
@@ -2350,7 +2542,16 @@
         const offline = /failed to fetch|fetch failed/i.test(e.message || '');
         throw new Error(offline ? '无法连接本地服务，请确认已双击 启动.bat' : (e.message || '网络请求失败'));
       }
-      const data = await res.json();
+      const text = await res.text();
+      let data;
+      try {
+        data = JSON.parse(text);
+      } catch {
+        if (/Cannot (GET|POST)/i.test(text)) {
+          throw new Error('服务版本过旧，请双击 停止.bat 后再双击 启动.bat 重启');
+        }
+        throw new Error('服务器返回异常，请双击 停止.bat 后再双击 启动.bat 重启');
+      }
       if (!res.ok || data.error) throw new Error(data.error || '请求失败');
       return data;
     }
@@ -2363,6 +2564,18 @@
         return `/api/proxy/avatar?u=${encodeURIComponent(full)}`;
       }
       return full;
+    }
+
+    function maskUid(uid) {
+      const s = String(uid ?? '');
+      if (!s) return '****';
+      if (s.length <= 4) return '****';
+      return s.slice(0, -4) + '****';
+    }
+
+    function uidHtml(uid, prefix = 'UID: ') {
+      const s = String(uid ?? '');
+      return `${prefix}<span class="uid-masked" title="悬停查看完整 UID"><span class="uid-short">${maskUid(s)}</span><span class="uid-full">${s}</span></span>`;
     }
 
     function showLoggedInPanel(user) {
@@ -2380,9 +2593,7 @@
     }
 
     function showUserUI(user) {
-      document.getElementById('userInfo').style.display = 'flex';
-      document.getElementById('userAvatar').src = avatarSrc(user.avatar);
-      document.getElementById('userName').textContent = user.name;
+      document.getElementById('upInfoCard').style.display = 'block';
       document.getElementById('upInfoBody').innerHTML = `
         <div style="display:flex; align-items:center; gap:12px;">
           <img src="${avatarSrc(user.avatar)}" style="width:48px;height:48px;border-radius:50%;">
@@ -2404,8 +2615,155 @@
           showLoggedInPanel(data.user);
           document.getElementById('btnFetchFans').style.display = 'block';
           document.getElementById('btnImportFans').style.display = 'block';
+          document.getElementById('btnImportTemplate').style.display = 'block';
+          document.getElementById('btnExportFans').style.display = 'block';
+          showPoolControls();
+          if (data.pool?.fans?.length) {
+            applyFanData({
+              fans: data.pool.fans,
+              bilibiliTotal: data.pool.bilibiliTotal,
+              limited: data.pool.limited,
+              complete: data.pool.complete,
+              missing: data.pool.missing,
+              poolSource: data.pool.poolSource,
+              commentOnly: data.pool.commentOnly,
+              commentCount: data.pool.commentCount,
+              fanBaseCount: data.pool.fanBaseCount,
+              fanPoolCount: data.pool.fanBaseCount,
+              videoTitle: data.pool.videoTitle,
+              videoBvid: data.pool.videoBvid,
+              contentKind: data.pool.contentKind
+            });
+            refreshFanSyncNotice();
+          }
         }
       } catch (_) {}
+    }
+
+    function updateSyncButtons() {
+      const canSync = isLoggedIn && fans.length > 0 && fanMeta.poolSource !== 'comments';
+      document.getElementById('btnSyncFans').style.display = canSync ? 'block' : 'none';
+    }
+
+    function renderFanSyncNotice(info) {
+      const box = document.getElementById('fanSyncNotice');
+      if (!info || fanMeta.poolSource === 'comments') {
+        box.classList.remove('show', 'warn');
+        box.textContent = '';
+        return;
+      }
+
+      const loaded = fans.length;
+      const live = info.currentTotal || fanMeta.liveTotal || fanMeta.bilibiliTotal;
+      fanMeta.liveTotal = live;
+
+      if (info.needsSync && live > loaded) {
+        const gap = live - loaded;
+        box.textContent = `B站粉丝数现为 ${live.toLocaleString()}（本地 ${loaded.toLocaleString()}），约有 ${gap.toLocaleString()} 位新粉丝未纳入，建议点击「同步新粉丝」。`;
+        box.classList.add('show', 'warn');
+      } else if (info.countChanged && live !== fanMeta.bilibiliTotal) {
+        box.textContent = `B站粉丝总数已更新为 ${live.toLocaleString()}（上次记录 ${fanMeta.bilibiliTotal.toLocaleString()}）。`;
+        box.classList.add('show');
+        box.classList.remove('warn');
+      } else if (loaded > 0) {
+        box.textContent = `粉丝数已与 B 站同步（当前 ${live.toLocaleString()} 人）。`;
+        box.classList.add('show');
+        box.classList.remove('warn');
+      } else {
+        box.classList.remove('show', 'warn');
+        box.textContent = '';
+      }
+
+      if (currentUser) {
+        currentUser.fans = live;
+        showUserUI(currentUser);
+      }
+      document.getElementById('statTotal').textContent = live.toLocaleString();
+    }
+
+    async function refreshFanSyncNotice() {
+      if (!isLoggedIn || fans.length === 0) return null;
+      try {
+        const info = await apiFetch('/api/fans/sync-check');
+        renderFanSyncNotice(info);
+        return info;
+      } catch (_) {
+        return null;
+      }
+    }
+
+    async function syncNewFans() {
+      if (!fans.length) return alert('请先获取粉丝数据');
+      if (fanMeta.poolSource === 'comments') return alert('仅评论模式下请重新从评论获取');
+
+      const btn = document.getElementById('btnSyncFans');
+      const bar = document.getElementById('loadingBar');
+      const progress = document.getElementById('loadingProgress');
+      const status = document.getElementById('loadingStatus');
+
+      btn.disabled = true;
+      btn.textContent = '正在同步...';
+      bar.classList.add('show');
+      status.classList.add('show');
+      progress.style.width = '4%';
+      status.textContent = '正在检查新粉丝...';
+
+      await new Promise((resolve, reject) => {
+        const es = new EventSource('/api/fans/sync/stream');
+        let finished = false;
+
+        const cleanup = () => {
+          if (!finished) {
+            finished = true;
+            es.close();
+          }
+        };
+
+        es.addEventListener('progress', (e) => {
+          const data = JSON.parse(e.data);
+          const pct = calcFetchPercent(data);
+          progress.style.width = `${pct}%`;
+          status.textContent = data.message || '同步中...';
+          btn.textContent = data.added > 0 ? `同步中 +${data.added}` : '同步中...';
+        });
+
+        es.addEventListener('done', (e) => {
+          cleanup();
+          const data = JSON.parse(e.data);
+          applyFanData(data);
+          finishFetchUI(true, 'btnSyncFans', '同步新粉丝');
+          if (data.added > 0) {
+            alert(`已同步 ${data.added} 位新粉丝，当前共 ${data.total} 人`);
+          } else {
+            alert('暂无新粉丝，名单仍是最新的');
+          }
+          refreshFanSyncNotice();
+          resolve();
+        });
+
+        es.addEventListener('failed', (e) => {
+          if (finished) return;
+          cleanup();
+          let msg = '同步新粉丝失败';
+          try {
+            msg = JSON.parse(e.data).error || msg;
+          } catch (_) {}
+          finishFetchUI(false, 'btnSyncFans', '同步新粉丝');
+          alert(msg);
+          reject(new Error(msg));
+        });
+
+        es.onerror = () => {
+          if (finished) return;
+          cleanup();
+          finishFetchUI(false, 'btnSyncFans', '同步新粉丝');
+          alert('同步连接中断，请重新双击 启动.bat 后重试');
+          reject(new Error('stream error'));
+        };
+      }).catch(() => {
+        document.getElementById('btnSyncFans').disabled = false;
+        document.getElementById('btnSyncFans').textContent = '同步新粉丝';
+      });
     }
 
     function createPrizePlaceholder(color, emoji) {
@@ -2502,6 +2860,9 @@
           showLoggedInPanel(data.user);
           document.getElementById('btnFetchFans').style.display = 'block';
           document.getElementById('btnImportFans').style.display = 'block';
+          document.getElementById('btnImportTemplate').style.display = 'block';
+          document.getElementById('btnExportFans').style.display = 'block';
+          showPoolControls();
           showUserUI(data.user);
         }
       } catch (e) {
@@ -2509,28 +2870,146 @@
       }
     }
 
+    function showPoolControls() {
+      document.getElementById('fetchHint').style.display = 'block';
+      document.getElementById('poolDivider').style.display = 'block';
+      document.getElementById('commentFetchBox').style.display = 'block';
+    }
+
+    function canStartLottery() {
+      if (fans.length === 0) return false;
+      if (fanMeta.commentOnly) return true;
+      return !!fanMeta.complete;
+    }
+
+    function updateLotteryButton() {
+      const btn = document.getElementById('btnLottery');
+      const ready = canStartLottery();
+      btn.disabled = !ready;
+      btn.title = ready
+        ? ''
+        : `粉丝名单不完整，还差 ${fanMeta.missing || Math.max(0, (fanMeta.bilibiliTotal || 0) - fans.length)} 人`;
+      if (!ready && fans.length > 0) {
+        btn.textContent = '⚠ 名单不完整，暂不可抽奖';
+      } else if (!lotteryRunning) {
+        btn.textContent = '🎲 开始抽奖';
+      }
+    }
+
+    function downloadFanCsv(list, filename) {
+      const rows = ['uid,name,followDays'];
+      for (const f of list) {
+        const name = String(f.name || '').replace(/"/g, '""');
+        rows.push(`${f.uid},"${name}",${f.followDays || 0}`);
+      }
+      const blob = new Blob(['\uFEFF' + rows.join('\n')], { type: 'text/csv;charset=utf-8' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = filename;
+      a.click();
+      URL.revokeObjectURL(a.href);
+    }
+
+    function exportCurrentFans() {
+      if (fans.length === 0) return alert('当前没有可导出的粉丝数据');
+      downloadFanCsv(fans, `粉丝名单_${fans.length}人_${new Date().toISOString().slice(0, 10)}.csv`);
+    }
+
+    function downloadImportTemplate() {
+      const csv = '\uFEFFuid,name,followDays\n12345678,示例昵称,365\n';
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = '粉丝导入模板.csv';
+      a.click();
+      URL.revokeObjectURL(a.href);
+    }
+
     function applyFanData(data) {
       fans = data.fans || [];
       fanMeta = {
         bilibiliTotal: data.bilibiliTotal || fans.length,
-        limited: !!data.limited
+        limited: !!data.limited,
+        apiMaxAutoFetch: data.apiMaxAutoFetch ?? API_FAN_AUTO_LIMIT,
+        poolSource: data.poolSource || 'fans',
+        videoTitle: data.videoTitle || '',
+        videoBvid: data.videoBvid || '',
+        contentKind: data.contentKind || 'video',
+        commentCount: data.commentCount || 0,
+        fanBaseCount: data.fanBaseCount || 0,
+        fanPoolCount: data.fanPoolCount || data.fanBaseCount || 0,
+        commentOnly: !!data.commentOnly,
+        complete: data.complete !== undefined ? !!data.complete : !data.limited,
+        missing: data.missing ?? Math.max(0, (data.bilibiliTotal || 0) - (data.fans?.length || 0))
       };
-      if (fanMeta.bilibiliTotal && currentUser) {
-        currentUser.fans = fanMeta.bilibiliTotal;
-        showUserUI(currentUser);
+      if (data.bilibiliTotal && currentUser && data.poolSource === 'fans') {
+        currentUser.fans = data.bilibiliTotal;
       }
+      if (currentUser) showUserUI(currentUser);
       filteredFans = [...fans];
       currentPage = 1;
       renderFans();
       updateStats();
-      document.getElementById('btnLottery').disabled = fans.length === 0;
+      updateLotteryButton();
+      updateImportGuide();
       document.getElementById('pagination').style.display = fans.length > 0 ? 'flex' : 'none';
 
       const btn = document.getElementById('btnFetchFans');
       btn.disabled = false;
-      btn.textContent = fanMeta.limited
-        ? `✓ 已加载 ${fans.length} / ${fanMeta.bilibiliTotal} 位粉丝`
-        : `✓ 已获取 ${fans.length} 位粉丝`;
+      if (fanMeta.poolSource === 'mixed') {
+        btn.textContent = fanMeta.fanBaseCount > 0
+          ? `✓ 粉丝池 ${fanMeta.fanBaseCount.toLocaleString()} 人`
+          : `✓ 已获取 ${fans.length.toLocaleString()} 位粉丝`;
+        document.getElementById('btnFetchComments').textContent =
+          `✓ 评论 ${fanMeta.commentCount} 人 · 合并共 ${fans.length.toLocaleString()} 人`;
+      } else if (fanMeta.poolSource === 'comments') {
+        btn.textContent = fanMeta.fanBaseCount > 0
+          ? `✓ 粉丝池 ${fanMeta.fanBaseCount.toLocaleString()} 人`
+          : '获取粉丝数据';
+        document.getElementById('btnFetchComments').textContent =
+          `✓ 评论池 ${fans.length.toLocaleString()} 人`;
+      } else {
+        document.getElementById('btnFetchComments').textContent = '从评论获取参与者';
+        btn.textContent = fanMeta.limited
+          ? `✓ 已加载 ${fans.length} / ${fanMeta.bilibiliTotal} 位粉丝`
+          : `✓ 已获取 ${fans.length} 位粉丝`;
+      }
+
+      const syncBtn = document.getElementById('btnSyncFans');
+      if (syncBtn && syncBtn.style.display !== 'none') {
+        syncBtn.disabled = false;
+        syncBtn.textContent = data.added > 0
+          ? `✓ 已同步 +${data.added} 人`
+          : '同步新粉丝';
+      }
+
+      const poolBox = document.getElementById('poolSourceBox');
+      if (fanMeta.poolSource === 'mixed') {
+        const kind = fanMeta.contentKind === 'opus' ? '动态' : '视频';
+        const added = Math.max(0, fans.length - fanMeta.fanBaseCount);
+        poolBox.textContent =
+          `已合并粉丝池与评论池（${kind}「${fanMeta.videoTitle || fanMeta.videoBvid}」）：粉丝 ${fanMeta.fanBaseCount.toLocaleString()} 人 + 评论 ${fanMeta.commentCount} 人，新增 ${added.toLocaleString()} 人，共 ${fans.length.toLocaleString()} 人可抽奖`;
+        poolBox.classList.add('show');
+      } else if (fanMeta.poolSource === 'comments') {
+        const kind = fanMeta.contentKind === 'opus' ? '动态' : '视频';
+        poolBox.textContent = `当前为仅评论抽奖模式（${kind}）：「${fanMeta.videoTitle || fanMeta.videoBvid}」共 ${fans.length} 位评论参与者`;
+        poolBox.classList.add('show');
+      } else if (fanMeta.limited) {
+        poolBox.classList.remove('show');
+      } else {
+        poolBox.textContent = '';
+        poolBox.classList.remove('show');
+      }
+
+      updateSyncButtons();
+      refreshFanSyncNotice();
+    }
+
+    function updateImportGuide() {
+      const box = document.getElementById('importGuide');
+      if (!box) return;
+      const show = fanMeta.limited && !fanMeta.complete && fans.length > 0;
+      box.style.display = show ? 'block' : 'none';
     }
 
     function parseImportedFans(text, filename) {
@@ -2569,8 +3048,39 @@
         const text = await file.text();
         const imported = parseImportedFans(text, file.name);
         if (imported.length === 0) {
-          alert('文件中没有有效的粉丝数据');
+          alert('文件中没有有效的粉丝数据\n\n格式：uid,昵称,关注天数（关注天数可填 0）');
           return;
+        }
+
+        const existingUids = new Set(fans.map(f => f.uid));
+        const toAdd = imported.filter(f => {
+          const uid = Number(f.uid ?? f.mid);
+          return uid && !existingUids.has(uid);
+        });
+        const dup = imported.length - toAdd.length;
+        const afterTotal = fans.length + toAdd.length;
+        const stillMissing = Math.max(0, (fanMeta.bilibiliTotal || 0) - afterTotal);
+
+        let msg = `文件共 ${imported.length} 人\n当前池 ${fans.length} 人\n将新增 ${toAdd.length} 人`;
+        if (dup > 0) msg += `\n（${dup} 人已在池中，自动跳过）`;
+        if (fanMeta.bilibiliTotal) {
+          msg += `\n导入后约 ${afterTotal} 人`;
+          if (stillMissing > 0) msg += `，仍差约 ${stillMissing} 人`;
+          else msg += `，名单将补全`;
+        }
+        msg += '\n\n确定导入并合并？';
+
+        if (!confirm(msg)) return;
+
+        if (toAdd.length > 0 && confirm('是否先下载「本次将新增的粉丝」名单备查？')) {
+          downloadFanCsv(
+            toAdd.map(f => ({
+              uid: Number(f.uid ?? f.mid),
+              name: f.name || f.uname || '',
+              followDays: Number(f.followDays ?? f.follow_days ?? 0) || 0
+            })),
+            `待新增粉丝_${toAdd.length}人.csv`
+          );
         }
 
         const data = await apiFetch('/api/fans/import', {
@@ -2580,43 +3090,189 @@
         });
 
         applyFanData(data);
-        alert(`已导入 ${data.imported} 位粉丝，当前共 ${data.total} 位可参与抽奖`);
+        let result = `已导入：新增 ${data.added ?? toAdd.length} 人，当前共 ${data.total} 人`;
+        if (data.complete) result += '\n\n✓ 名单已补全，可以抽奖了！';
+        else if (data.missing > 0) result += `\n\n仍差 ${data.missing} 人，需继续补充或改用评论抽奖。`;
+        alert(result);
       } catch (e) {
         alert(e.message || '导入失败');
       }
     }
 
+    async function fetchCommentPool() {
+      const videoId = document.getElementById('videoInput').value.trim();
+      const keyword = document.getElementById('keywordInput').value.trim();
+      if (!videoId) return alert('请输入视频 BV 号、视频链接或动态 opus 链接');
+
+      const btn = document.getElementById('btnFetchComments');
+      const bar = document.getElementById('loadingBar');
+      const progress = document.getElementById('loadingProgress');
+      const status = document.getElementById('loadingStatus');
+
+      btn.disabled = true;
+      btn.textContent = '正在拉取评论...';
+      bar.classList.add('show');
+      status.classList.add('show');
+      progress.style.width = '4%';
+      status.textContent = '正在连接...';
+
+      const params = new URLSearchParams({
+        videoId,
+        keyword,
+        commentOnly: document.getElementById('commentOnlyPool').checked ? '1' : '0'
+      });
+
+      await new Promise((resolve, reject) => {
+        const es = new EventSource(`/api/fans/from-video/stream?${params}`);
+        let finished = false;
+
+        const cleanup = () => {
+          if (!finished) {
+            finished = true;
+            es.close();
+          }
+        };
+
+        es.addEventListener('progress', (e) => {
+          const data = JSON.parse(e.data);
+          const pct = calcFetchPercent(data);
+          progress.style.width = `${pct}%`;
+          status.textContent = data.message || `已获取 ${data.fetched} 人`;
+          btn.textContent = data.total > 0
+            ? `拉取中 ${data.fetched}/${data.total}`
+            : `拉取中 ${data.fetched} 人`;
+        });
+
+        es.addEventListener('done', (e) => {
+          cleanup();
+          const data = JSON.parse(e.data);
+          applyFanData(data);
+          finishFetchUI(true, 'btnFetchComments', '从评论获取参与者');
+          resolve();
+        });
+
+        es.addEventListener('failed', (e) => {
+          cleanup();
+          let msg = '获取评论参与者失败';
+          try {
+            msg = JSON.parse(e.data).error || msg;
+          } catch (_) {}
+          finishFetchUI(false, 'btnFetchComments', '从评论获取参与者');
+          alert(msg);
+          reject(new Error(msg));
+        });
+
+        es.onerror = () => {
+          if (finished) return;
+          cleanup();
+          finishFetchUI(false, 'btnFetchComments', '从评论获取参与者');
+          alert('拉取评论连接中断，请重新双击 启动.bat 后重试');
+          reject(new Error('stream error'));
+        };
+      }).catch(() => {});
+    }
+
     // ========== Fetch Fans ==========
+    function calcFetchPercent(data) {
+      if (data.phase === 'resolve') return 5;
+      if (data.phase === 'merge') return 95;
+      if (data.phase === 'done') return 100;
+      if (data.total > 0) {
+        return Math.min(99, Math.round((data.fetched / data.total) * 100));
+      }
+      if (data.maxPages > 0 && data.page > 0) {
+        return Math.min(90, Math.round((data.page / data.maxPages) * 100));
+      }
+      if (data.page > 0) {
+        return Math.min(85, 10 + data.page * 3);
+      }
+      return 8;
+    }
+
+    function finishFetchUI(success, btnId, btnLabel) {
+      const bar = document.getElementById('loadingBar');
+      const progress = document.getElementById('loadingProgress');
+      const status = document.getElementById('loadingStatus');
+      const btn = document.getElementById(btnId);
+
+      if (success) {
+        progress.style.width = '100%';
+        status.textContent = '拉取完成';
+        btn.disabled = false;
+        setTimeout(() => {
+          bar.classList.remove('show');
+          status.classList.remove('show');
+        }, 500);
+      } else {
+        bar.classList.remove('show');
+        status.classList.remove('show');
+        progress.style.width = '0%';
+        btn.disabled = false;
+        btn.textContent = btnLabel;
+      }
+    }
+
     async function fetchFans() {
       const btn = document.getElementById('btnFetchFans');
       const bar = document.getElementById('loadingBar');
       const progress = document.getElementById('loadingProgress');
+      const status = document.getElementById('loadingStatus');
 
       btn.disabled = true;
-      btn.textContent = '正在拉取全部粉丝...';
+      btn.textContent = '正在拉取粉丝...';
       bar.classList.add('show');
-      progress.style.width = '15%';
+      status.classList.add('show');
+      progress.style.width = '4%';
+      status.textContent = '正在连接...';
 
-      try {
-        const timer = setInterval(() => {
-          const w = parseFloat(progress.style.width) || 15;
-          if (w < 90) progress.style.width = Math.min(90, w + 5) + '%';
-        }, 800);
+      await new Promise((resolve, reject) => {
+        const es = new EventSource('/api/fans/stream');
+        let finished = false;
 
-        const res = await fetch('/api/fans');
-        clearInterval(timer);
-        const data = await res.json();
-        if (data.error) throw new Error(data.error);
+        const cleanup = () => {
+          if (!finished) {
+            finished = true;
+            es.close();
+          }
+        };
 
-        progress.style.width = '100%';
-        applyFanData(data);
-        bar.classList.remove('show');
-      } catch (e) {
-        bar.classList.remove('show');
-        btn.disabled = false;
-        btn.textContent = '获取粉丝数据';
-        alert(e.message || '获取粉丝失败');
-      }
+        es.addEventListener('progress', (e) => {
+          const data = JSON.parse(e.data);
+          const pct = calcFetchPercent(data);
+          progress.style.width = `${pct}%`;
+          status.textContent = data.message || `已获取 ${data.fetched} 人`;
+          btn.textContent = data.total > 0
+            ? `拉取中 ${data.fetched}/${data.total}`
+            : `拉取中 ${data.fetched} 人`;
+        });
+
+        es.addEventListener('done', (e) => {
+          cleanup();
+          const data = JSON.parse(e.data);
+          applyFanData(data);
+          finishFetchUI(true, 'btnFetchFans', '获取粉丝数据');
+          resolve();
+        });
+
+        es.addEventListener('failed', (e) => {
+          cleanup();
+          let msg = '获取粉丝失败';
+          try {
+            msg = JSON.parse(e.data).error || msg;
+          } catch (_) {}
+          finishFetchUI(false, 'btnFetchFans', '获取粉丝数据');
+          alert(msg);
+          reject(new Error(msg));
+        });
+
+        es.onerror = () => {
+          if (finished) return;
+          cleanup();
+          finishFetchUI(false, 'btnFetchFans', '获取粉丝数据');
+          alert('拉取粉丝连接中断，请重新双击 启动.bat 后重试');
+          reject(new Error('stream error'));
+        };
+      }).catch(() => {});
     }
 
     // ========== Render Fans ==========
@@ -2639,7 +3295,7 @@
               ${fan.vip ? '<span class="fan-badge badge-vip">大会员</span>' : ''}
               ${fan.followDays > 1000 ? '<span class="fan-badge badge-old">老粉</span>' : ''}
             </div>
-            <div class="fan-uid">UID: ${fan.uid}</div>
+            <div class="fan-uid">${uidHtml(fan.uid)}</div>
           </div>
           <div class="fan-days">
             <div class="days-num">${fan.followDays}</div>
@@ -2653,23 +3309,62 @@
     }
 
     function updateStats() {
+      const apiLimit = fanMeta.apiMaxAutoFetch || API_FAN_AUTO_LIMIT;
       const totalOnBili = fanMeta.bilibiliTotal || fans.length;
-      document.getElementById('statTotal').textContent = totalOnBili.toLocaleString();
-      document.getElementById('fanCountLabel').textContent = fanMeta.limited
-        ? `B站 ${totalOnBili.toLocaleString()} 位 · 已加载 ${fans.length.toLocaleString()} 位`
-        : `共 ${fans.length.toLocaleString()} 位粉丝`;
-
+      const loaded = fans.length;
       const notice = document.getElementById('fanLimitNotice');
-      if (fanMeta.limited) {
-        const missing = totalOnBili - fans.length;
-        notice.textContent = `仍有 ${missing.toLocaleString()} 位粉丝未能自动获取，可点击左侧「导入粉丝补充」上传 JSON/CSV 文件后参与抽奖。`;
-        notice.classList.add('show');
-      } else {
+
+      document.getElementById('statLoaded').textContent = loaded.toLocaleString();
+
+      if (fanMeta.poolSource === 'comments') {
+        document.getElementById('statTotal').textContent = (currentUser?.fans || fanMeta.bilibiliTotal || loaded).toLocaleString();
+        document.getElementById('fanCountLabel').textContent = `评论池 ${loaded.toLocaleString()} 人`;
         notice.textContent = '';
         notice.classList.remove('show');
+      } else if (fanMeta.poolSource === 'mixed') {
+        document.getElementById('statTotal').textContent = totalOnBili.toLocaleString();
+        document.getElementById('fanCountLabel').textContent =
+          `合并池 ${loaded.toLocaleString()} 人（粉丝 ${fanMeta.fanBaseCount.toLocaleString()} + 评论 ${fanMeta.commentCount}）`;
+        notice.classList.remove('complete', 'blocking');
+        if (!fanMeta.complete && fanMeta.missing > 0) {
+          notice.textContent = `粉丝池不完整，还差 ${fanMeta.missing.toLocaleString()} 人。评论合并不能代替缺失粉丝，请重新获取或导入补充后再抽奖。`;
+          notice.classList.add('show', 'blocking');
+        } else {
+          notice.textContent = `已合并粉丝池与评论池，当前共 ${loaded.toLocaleString()} 人，名单完整可抽奖。`;
+          notice.classList.add('show', 'complete');
+        }
+      } else {
+        document.getElementById('statTotal').textContent = totalOnBili.toLocaleString();
+        document.getElementById('fanCountLabel').textContent = fanMeta.complete
+          ? `共 ${loaded.toLocaleString()} 位粉丝（已全部获取）`
+          : fanMeta.limited
+            ? `B站 ${totalOnBili.toLocaleString()} 位 · 已获取 ${loaded.toLocaleString()} 位`
+            : `共 ${loaded.toLocaleString()} 位粉丝`;
+
+        notice.classList.remove('complete', 'blocking');
+
+        if (fanMeta.complete && loaded > 0) {
+          notice.textContent = `✓ 已获取全部 ${loaded.toLocaleString()} 位粉丝，可以抽奖。`;
+          notice.classList.add('show', 'complete');
+        } else if (fanMeta.limited && loaded > 0) {
+          const missing = fanMeta.missing || Math.max(0, totalOnBili - loaded);
+          if (totalOnBili > apiLimit) {
+            notice.textContent = `B站共有 ${totalOnBili.toLocaleString()} 位粉丝，API 自动拉取上限约 ${apiLimit.toLocaleString()} 位，还差 ${missing.toLocaleString()} 人。请导入补充或改用评论抽奖。名单补全前无法开始抽奖。`;
+          } else {
+            notice.textContent = `还差 ${missing.toLocaleString()} 位粉丝未能获取（与关注天数无关）。请重新获取或导入补充，名单补全前无法开始抽奖。`;
+          }
+          notice.classList.add('show', 'blocking');
+        } else {
+          notice.textContent = '';
+          notice.classList.remove('show');
+        }
       }
 
-      if (fans.length === 0) return;
+      if (fans.length === 0) {
+        document.getElementById('statAvgDays').textContent = '0';
+        document.getElementById('statMaxDays').textContent = '0';
+        return;
+      }
 
       const days = fans.map(f => f.followDays);
       const avg = Math.round(days.reduce((a, b) => a + b, 0) / days.length);
@@ -3141,7 +3836,7 @@
       slotMachine.style.display = 'none';
       document.getElementById('revealAvatar').src = avatarSrc(winner.avatar);
       document.getElementById('revealName').textContent = winner.name;
-      document.getElementById('revealMeta').textContent = `UID: ${winner.uid} · 已关注 ${winner.followDays} 天`;
+      document.getElementById('revealMeta').innerHTML = `${uidHtml(winner.uid)} · 已关注 ${winner.followDays} 天`;
       document.getElementById('revealPrize').textContent = `获得：${prize.name}`;
 
       const prizeImgWrap = document.getElementById('revealPrizeImgWrap');
@@ -3252,6 +3947,18 @@
     async function startLottery() {
       if (fans.length === 0 || lotteryRunning) return;
 
+      if (!canStartLottery()) {
+        const missing = fanMeta.missing || Math.max(0, (fanMeta.bilibiliTotal || 0) - fans.length);
+        alert(
+          `粉丝名单还不完整，不能开始抽奖（否则会有 ${missing} 位粉丝无法参与）。\n\n` +
+          `请先尝试：\n` +
+          `1. 重新点击「获取粉丝数据」（已修复按关注时间拉取）\n` +
+          `2. 使用「导入粉丝补充」补全缺失名单\n` +
+          `3. 或发抽奖动态，勾选「仅评论抽奖」——让粉丝评论报名参与`
+        );
+        return;
+      }
+
       const btn = document.getElementById('btnLottery');
       const minDays = parseInt(document.getElementById('minDays').value) || 0;
 
@@ -3314,7 +4021,7 @@
           <img src="${avatarSrc(w.avatar)}" alt="${w.name}">
           <div class="winner-info">
             <h3>${w.name}</h3>
-            <p>UID: ${w.uid} · 关注 ${w.followDays} 天</p>
+            <p>${uidHtml(w.uid)} · 关注 ${w.followDays} 天</p>
           </div>
           <div class="winner-prize-wrap">
             <div class="winner-prize">${w.prize}</div>
@@ -3361,15 +4068,11 @@
 
     function getReplyDeadlineMs() {
       const preset = document.getElementById('replyDeadline').value;
-      const demoMode = document.getElementById('demoSpeed').checked;
       let hours;
       if (preset === 'custom') {
         hours = parseFloat(document.getElementById('replyCustomHours').value) || 24;
       } else {
         hours = parseInt(preset, 10);
-      }
-      if (demoMode) {
-        return (hours / 24) * 60 * 1000;
       }
       return hours * 60 * 60 * 1000;
     }
@@ -3436,8 +4139,6 @@
 
     function showNotifyPanel() {
       document.getElementById('notifySection').classList.add('show');
-      document.getElementById('demoHint').style.display =
-        document.getElementById('demoSpeed').checked ? 'block' : 'none';
       renderNotifyList();
     }
 
@@ -3510,7 +4211,7 @@
                 ${record.isRedraw ? '<span class="redraw-badge">重抽</span>' : ''}
                 <span class="status-tag ${record.status}">${statusLabels[record.status]}</span>
               </h4>
-              <div class="meta">UID: ${record.uid} · 关注 ${record.followDays} 天 · 发送于 ${record.sentAt ? formatDateTime(record.sentAt) : '未发送'}</div>
+              <div class="meta">${uidHtml(record.uid)} · 关注 ${record.followDays} 天 · 发送于 ${record.sentAt ? formatDateTime(record.sentAt) : '未发送'}</div>
               <div class="notify-prize-row">
                 <img class="notify-prize-img" src="${record.prizeImage || getDefaultPrizeImage(record.level)}" alt="">
                 <span class="notify-prize-tag">${record.prize}</span>
@@ -3609,7 +4310,7 @@
         <img src="${avatarSrc(record.avatar)}" alt="">
         <div>
           <div style="font-weight:600;">${record.name}</div>
-          <div style="font-size:12px;color:var(--text-secondary);">UID: ${record.uid} · ${record.prize}</div>
+          <div style="font-size:12px;color:var(--text-secondary);">${uidHtml(record.uid)} · ${record.prize}</div>
         </div>`;
       document.getElementById('notifyEditBox').textContent = msg;
       document.getElementById('notifyEditBox').contentEditable = !viewOnly;
@@ -3794,7 +4495,7 @@
 
       document.getElementById('revealAvatar').src = avatarSrc(newWinner.avatar);
       document.getElementById('revealName').textContent = newWinner.name;
-      document.getElementById('revealMeta').textContent = `UID: ${newWinner.uid} · 已关注 ${newWinner.followDays} 天`;
+      document.getElementById('revealMeta').innerHTML = `${uidHtml(newWinner.uid)} · 已关注 ${newWinner.followDays} 天`;
       document.getElementById('revealPrize').textContent = `重抽获得：${oldRecord.prize}`;
       document.getElementById('revealPrizeImage').src = oldRecord.prizeImage || getDefaultPrizeImage(oldRecord.level);
       document.getElementById('revealPrizeImgWrap').style.display = 'block';
